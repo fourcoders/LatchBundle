@@ -1,0 +1,3 @@
+fourcoders_latch_register:
+    pattern:  /latch_pair
+    defaults: { _controller: FourcodersLatchBundle:Registration:register }

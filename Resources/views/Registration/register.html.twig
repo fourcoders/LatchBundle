@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			.latch.container_register {
+				width:450px; 
+				margin: 0 auto;
+			}
+			.latch.container_register table{
+				width: 100%;
+			}
+			.latch.container_register input[type=submit]{
+				background-color: #00b9be;
+				color: white;
+				text-shadow: none;
+				border: none;
+				padding: 15px;
+				display: inline-block;
+				padding: 6px 12px;
+				margin-bottom: 0;
+				font-size: 14px;
+				font-weight: normal;
+				line-height: 1.428571429;
+				text-align: center;
+				white-space: nowrap;
+				vertical-align: middle;
+				cursor: pointer;
+				border: 1px solid transparent;	
+				width: 100%;			
+			}
+			.latch.container_register input[type=text],
+			.latch.container_register input[type=password]
+			{
+				vertical-align: middle;
+				background-color: #fff;
+				border: 1px solid #ccc;		
+				padding: 5px 0px;
+				width: 100%;		
+			}
+			.latch.container_register thead{
+				background:#333;
+			}
+			.latch.container_register .error{
+				background:#FF0040;
+			}
+			.latch.container_register .error span{
+				padding: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<form method="post" action="{{ path('fourcoders_latch_register') }}">
+			<div class="latch container_register">
+				<table>
+					<thead >
+						<tr>
+							<td colspan="2">
+								<img src="{{ asset('bundles/fourcoderslatch/img/logo_Latch.png') }}">
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="2" {% if error.message != '' %}class="error"{% endif %}>
+								<span>{{error.message}}</span>
+							</td>
+						</tr>
+						<tr>
+							<td>{{ 'latch_token'|trans }}</td>
+							<td><input name="latch" type="text"></td>
+						</tr>						
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>
+								<input type="submit" class="latchinputregister" value="{{'latch_pair'|trans}}">
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</form>
+
+	</body>
+</html>

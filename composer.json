@@ -1,0 +1,23 @@
+{
+    "name": "fourcoders/latch-bundle",
+    "type": "symfony-bundle",
+    "description": "Easy integration of Latch in your symfony2 project.",
+    "keywords": ["secirity", "symfony", "latch", "fourcoders"],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [{
+            "name": "fourcoders",
+            "homepage": "http://fourcoders.com/",
+            "email": "fourcoders@gmail.com"
+        }],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": ">=2.0.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Fourcoders\\Bundle\\LatchBundle": ""
+        }
+    },
+    "target-dir": "Fourcoders/Bundle/LatchBundle"
+}

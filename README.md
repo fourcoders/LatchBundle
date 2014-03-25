@@ -92,5 +92,5 @@ of the bundle.
 The following documents are available:
 
 - [Use into the FOSUserBundle](use_fos.md)
-- [user into the standard registration of symfony documentation](controller_events.md)
+- [Use into the standard registration of symfony documentation](controller_events.md)
 - [Overriding Templates](overriding_templates.md)

@@ -1,0 +1,2 @@
+Use LatchBundle with FOSUserBundle
+==================================

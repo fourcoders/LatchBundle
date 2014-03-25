@@ -22,7 +22,7 @@ For more information about translations, check [Symfony documentation](http://sy
 
 1. Download LatchBundle using composer
 2. Enable the Bundle
-3. update your User class
+3. Update your User class
 4. Configure the LatchBundle
 5. Import LatchBundle routing
 6. Update your database schema

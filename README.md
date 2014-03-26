@@ -20,12 +20,12 @@ For more information about translations, check [Symfony documentation](http://sy
 
 ## Installation
 
-1. [Download LatchBundle using composer](#cabecera1)
-2. [Enable the Bundle](#cabecera2)
-3. [Update your User class](#cabecera3)
-4. [Configure the LatchBundle](#cabecera4)
-5. [Import LatchBundle routing](#cabecera5)
-6. [Update your database schema](#cabecera6)
+1. [Download LatchBundle using composer](#enlace1)
+2. [Enable the Bundle](#enlace2)
+3. [Update your User class](#enlace3)
+4. [Configure the LatchBundle](#enlace4)
+5. [Import LatchBundle routing](#enlace5)
+6. [Update your database schema](#enlace6)
 
 ### Step 1: Download LatchBundle using composer {#enlace1}
 

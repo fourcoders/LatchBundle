@@ -59,6 +59,7 @@ public function registerBundles()
 ### Step 3: Update your User class
 
 Insert a new field in the User entity, or whatever you are using with your security provider. 
+
 If you are using FOSUserBundle this a example:
 
 ``` php
@@ -81,6 +82,8 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /* Start of the new field */
 
     /**
      * @var string $latch
@@ -107,7 +110,9 @@ class User extends BaseUser
     public function getlatch()
     {
         return $this->latch;
-    }    
+    }   
+
+    /* End of the new field */ 
 
     public function __construct()
     {
@@ -116,6 +121,93 @@ class User extends BaseUser
     }
 }
 ```
+
+For a stardard register, check [Symfony documentation](http://symfony.com/doc/current/cookbook/doctrine/registration_form.html).
+Override the User.php.
+
+``` php
+<?php
+// src/Acme/AccountBundle/Entity/User.php
+namespace Acme\AccountBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * @ORM\Entity
+ * @UniqueEntity(fields="email", message="Email already taken")
+ */
+class User
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     */
+    protected $email;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 4096)
+     */
+    protected $plainPassword;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+    }
+
+    /* Start of the new field */
+
+    /**
+     * @ORM\Column(name="latch", type="string", length=255, nullable=true)
+     */
+    private $latch;    
+
+    public function setLatch($latch)
+    {
+        $this->latch = $latch;
+    }
+
+    public function getlatch()
+    {
+        return $this->latch;
+    }   
+
+    /* End of the new field */ 
+
+}
+```
+
 
 ### Step 4: Configure the LatchBundle
 

@@ -8,7 +8,7 @@
             </trans-unit>
             <trans-unit id="2">
                 <source>latch_pair</source>
-                <target>Parear</target>
+                <target>Sincronizar</target>
             </trans-unit>      
         </body>
     </file>

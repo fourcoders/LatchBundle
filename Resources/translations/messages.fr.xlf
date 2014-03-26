@@ -4,11 +4,11 @@
         <body>
             <trans-unit id="1">
                 <source>latch_token</source>
-                <target>Código</target>
+                <target>Code</target>
             </trans-unit>
             <trans-unit id="2">
                 <source>latch_pair</source>
-                <target>Parear</target>
+                <target>Synchroniser</target>
             </trans-unit>      
         </body>
     </file>

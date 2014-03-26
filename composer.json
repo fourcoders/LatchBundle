@@ -2,7 +2,7 @@
     "name": "fourcoders/latch-bundle",
     "type": "symfony-bundle",
     "description": "Easy integration of Latch in your symfony2 project.",
-    "keywords": ["secirity", "symfony", "latch", "fourcoders"],
+    "keywords": ["security", "symfony", "latch", "fourcoders"],
     "license": "MIT",
     "minimum-stability": "dev",
     "authors": [{

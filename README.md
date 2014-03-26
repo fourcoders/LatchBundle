@@ -122,8 +122,7 @@ class User extends BaseUser
 }
 ```
 
-For a stardard register, check [Symfony documentation](http://symfony.com/doc/current/cookbook/doctrine/registration_form.html).
-Override the User.php.
+For a stardard register, check [Symfony documentation](http://symfony.com/doc/current/cookbook/doctrine/registration_form.html), after you can override the User.php.
 
 ``` php
 <?php

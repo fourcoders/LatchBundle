@@ -20,14 +20,14 @@ For more information about translations, check [Symfony documentation](http://sy
 
 ## Installation
 
-1. [Download LatchBundle using composer](#enlace1)
-2. [Enable the Bundle](#enlace2)
-3. [Update your User class](#enlace3)
-4. [Configure the LatchBundle](#enlace4)
-5. [Import LatchBundle routing](#enlace5)
-6. [Update your database schema](#enlace6)
+1. [Download LatchBundle using composer](#step1-download-latchbundle-using-composer)
+2. [Enable the Bundle](#step-2-enable-the-bundle)
+3. [Update your User class](#step-3-update-your-user-class)
+4. [Configure the LatchBundle](#step-4-configure-the-latchbundle)
+5. [Import LatchBundle routing](#step-5-import-latchbundle-routing)
+6. [Update your database schema](#step-6-update-your-database-schema)
 
-### Step 1: Download LatchBundle using composer {#enlace1}
+### Step 1: Download LatchBundle using composer
 
 Add LatchBundle in your composer.json:
 
@@ -39,7 +39,7 @@ Add LatchBundle in your composer.json:
 }
 ```
 
-### Step 2: Enable the bundle {#enlace2}
+### Step 2: Enable the bundle
 
 Enable the bundle in the kernel:
 
@@ -56,7 +56,7 @@ public function registerBundles()
 }
 ```
 
-### Step 3: Update your User class {#enlace3}
+### Step 3: Update your User class
 
 Insert a new field in the User entity, or whatever you are using with your security provider. 
 
@@ -208,7 +208,7 @@ class User
 ```
 
 
-### Step 4: Configure the LatchBundle {#enlace4}
+### Step 4: Configure the LatchBundle
 
 ``` yaml
 # app/config/config.yml
@@ -218,7 +218,7 @@ fourcoders_latch:
     latch_redirect: / 
 ```
 
-### Step 5: Import LatchBundle routing files {#enlace5}
+### Step 5: Import LatchBundle routing files 
 
 ``` yaml
 # app/config/routing.yml
@@ -227,7 +227,7 @@ fourcoders_latch:
     prefix:   /
 ```
 
-### Step 6: Update your database schema {#enlace6}
+### Step 6: Update your database schema 
 
 For ORM run the following command.
 

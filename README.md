@@ -58,6 +58,65 @@ public function registerBundles()
 
 ### Step 3: Update your User class
 
+Insert a new field in the User entity, or whatever you are using with your security provider. 
+If you are using FOSUserBundle this a example:
+
+``` php
+<?php
+// src/Acme/UserBundle/Entity/User.php
+namespace Acme\UserBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="user")
+ */
+class User extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string $latch
+     *
+     * @ORM\Column(name="latch", type="string", length=255, nullable=true)
+     */
+    private $latch;    
+
+    /**
+     * Set latch
+     *
+     * @param string $latch
+     */
+    public function setLatch($latch)
+    {
+        $this->latch = $latch;
+    }
+
+    /**
+     * Get latch
+     *
+     * @return string 
+     */
+    public function getlatch()
+    {
+        return $this->latch;
+    }    
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}
+```
+
 ### Step 4: Configure the LatchBundle
 
 ``` yaml

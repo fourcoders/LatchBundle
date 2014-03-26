@@ -20,11 +20,11 @@ For more information about translations, check [Symfony documentation](http://sy
 
 ## Installation
 
-1. [Download LatchBundle using composer](#step1-download-latchbundle-using-composer)
+1. [Download LatchBundle using composer](#step-1-download-latchbundle-using-composer)
 2. [Enable the Bundle](#step-2-enable-the-bundle)
 3. [Update your User class](#step-3-update-your-user-class)
 4. [Configure the LatchBundle](#step-4-configure-the-latchbundle)
-5. [Import LatchBundle routing](#step-5-import-latchbundle-routing)
+5. [Import LatchBundle routing](#step-5-import-latchbundle-routing-files)
 6. [Update your database schema](#step-6-update-your-database-schema)
 
 ### Step 1: Download LatchBundle using composer

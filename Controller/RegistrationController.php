@@ -6,15 +6,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Fourcoders\Bundle\LatchBundle\Latch\Latch;
 use Fourcoders\Bundle\LatchBundle\Latch\LatchResponse;
 use Fourcoders\Bundle\LatchBundle\Latch\Error;
+use Fourcoders\Bundle\LatchBundle\Form\LatchType;
 use Symfony\Component\HttpFoundation\Request;
 
 class RegistrationController extends Controller
 {
     public function registerAction(Request $request)
     {
+        $form = $this->createForm(new LatchType(),null);
     	$user = $this->container->get('security.context')->getToken()->getUser();
     	if ($request->getMethod() == 'POST') {
-    		if ($_POST['latch'] != '') {
+            if (method_exists($form,'getRequest')) {
+                $form->bindRequest($request());
+            } else {
+                $form->handleRequest($request);
+            }
+    		if ($form->isValid()) {
 			    $appId = $this->container->getParameter('latch_app_id');
 			    $appSecret = $this->container->getParameter('latch_app_secret');
 			    $api = new Latch($appId, $appSecret);
@@ -36,7 +43,8 @@ class RegistrationController extends Controller
     		}
     	}
         return $this->render('FourcodersLatchBundle:Registration:register.html.twig', array(
-        	'error' => isset($error) ? $error : array('message' => '' )
+        	'error' => isset($error) ? $error : array('message' => '' ),
+            'form' => $form->createView()
         ));
     }
 }

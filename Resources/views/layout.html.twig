@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+        <style type="text/css">
+            .latch.container_register {
+                width:450px; 
+                margin: 0 auto;
+            }
+            .latch.container_register table{
+                width: 100%;
+            }
+            .latch.container_register input[type=submit]{
+                background-color: #00b9be;
+                color: white;
+                text-shadow: none;
+                border: none;
+                padding: 15px;
+                display: inline-block;
+                padding: 6px 12px;
+                margin-bottom: 0;
+                font-size: 14px;
+                font-weight: normal;
+                line-height: 1.428571429;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: middle;
+                cursor: pointer;
+                border: 1px solid transparent;  
+                width: 100%;            
+            }
+            .latch.container_register input[type=text],
+            .latch.container_register input[type=password]
+            {
+                vertical-align: middle;
+                background-color: #fff;
+                border: 1px solid #ccc;     
+                padding: 5px 0px;
+                width: 100%;        
+            }
+            .latch.container_register thead{
+                background:#333;
+            }
+            .latch.container_register .error{
+                background:#FF0040;
+            }
+            .latch.container_register .error span{
+                padding: 25px;
+            }
+        </style>
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

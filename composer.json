@@ -4,6 +4,7 @@
     "description": "Easy integration of Latch in your symfony2 project.",
     "keywords": ["security", "symfony", "latch", "fourcoders", "php"],
     "license": "MIT",
+    "minimum-stability": "stable",
     "authors": [{
             "name": "fourcoders",
             "homepage": "http://fourcoders.com/",

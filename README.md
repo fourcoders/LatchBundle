@@ -1,7 +1,7 @@
 LatchBundle -- DEV
 ============================
 Easy integration of Latch in your symfony2 project. 
-You can visit the official website: [](http://fourcoders.github.io/LatchBundle/)
+You can visit the official website: [http://fourcoders.github.io/LatchBundle/](http://fourcoders.github.io/LatchBundle/)
 
 ## Prerequisites
 

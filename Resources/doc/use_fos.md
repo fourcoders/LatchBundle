@@ -15,3 +15,5 @@ You can override some template of FOSUserBundle and redirect to the path of Latc
 		</script>
 	{% endblock fos_user_content %}	
 ```
+
+You can make a custom listener too.

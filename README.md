@@ -1,6 +1,7 @@
 LatchBundle -- DEV
 ============================
-Easy integration of Latch in your symfony2 project.
+Easy integration of Latch in your symfony2 project. 
+You can visit the official website: [latchbundle](http://fourcoders.github.io/LatchBundle/ "latchbundle")
 
 ## Prerequisites
 
@@ -8,9 +9,6 @@ Easy integration of Latch in your symfony2 project.
 
 If you wish to use default texts provided in this bundle, you have to make
 sure you have translator enabled in your config.
-
-You can see the official website: [latchbundle](http://fourcoders.github.io/LatchBundle/ "latchbundle")
-
 
 
 ``` yaml

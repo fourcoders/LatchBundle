@@ -1,5 +1,5 @@
 {% extends "FourcodersLatchBundle::layout.html.twig" %}
-{% block body %}
+{% block latch_content %}
 	<form method="post" action="{{ path('fourcoders_latch_register') }}">
 		{{ form_widget(form._token) }}
 		<div class="latch container_register">

@@ -22,9 +22,10 @@ class LatchListener
     public function onSecurityInteractiveLogin(InteractiveLoginEvent $event)
     {
         $user = $event->getAuthenticationToken()->getUser();
-        if (!empty($user->getLatch())) {
+        $latchValue = $user->getLatch();
+        if ($latchValue != '') {
             $appId = $this->container->getParameter('latch_app_id');
-            $appSecret = $this->container->getParameter('latch_app_secret');            
+            $appSecret = $this->container->getParameter('latch_app_secret');
             $api = new Latch($appId, $appSecret);
             $statusResponse = $api->status($user->getLatch());
             if ($statusResponse->getError() === null) {
@@ -35,7 +36,7 @@ class LatchListener
             } else {
                 $this->container->get('security.context')->setToken(null);
                 $this->container->get('request')->getSession()->invalidate();
-            }  
-        }    
+            }
+        }
     }
 }

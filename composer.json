@@ -9,7 +9,7 @@
             "name": "fourcoders",
             "homepage": "http://fourcoders.com/",
             "email": "fourcoders@gmail.com"
-        }],
+    }],
    "repositories": [
         {
             "type": "package",

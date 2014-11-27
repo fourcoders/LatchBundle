@@ -3,29 +3,28 @@
 namespace Fourcoders\Bundle\LatchBundle\EventListener;
 
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
-use Fourcoders\Bundle\LatchBundle\Latch\Latch;
-use Fourcoders\Bundle\LatchBundle\Latch\LatchResponse;
-use Fourcoders\Bundle\LatchBundle\Latch\Error;
+use Latch;
 
 class LatchListener
 {
-
-
     protected $container;
+    protected $latchAppId;
+    protected $latchAppSecret;
 
-    public function __construct($container)
+    public function __construct($container, $latchAppId, $latchAppSecret)
     {
         $this->container = $container;
+        $this->latchAppId = $latchAppId;
+        $this->latchAppSecret = $latchAppSecret;
     }
-
 
     public function onSecurityInteractiveLogin(InteractiveLoginEvent $event)
     {
         $user = $event->getAuthenticationToken()->getUser();
         $latchValue = $user->getLatch();
         if ($latchValue != '') {
-            $appId = $this->container->getParameter('latch_app_id');
-            $appSecret = $this->container->getParameter('latch_app_secret');
+            $appId = $this->latchAppId;
+            $appSecret = $this->latchAppSecret;
             $api = new Latch($appId, $appSecret);
             $statusResponse = $api->status($user->getLatch());
             if ($statusResponse->getError() === null) {

@@ -16,11 +16,11 @@ class LatchType extends AbstractType
                 'required' => true,
                 'constraints' => array(
                     new NotBlank(),
-                ),                
+                ),
             ))
         ;
     }
-    
+
     public function getName()
     {
         return '';

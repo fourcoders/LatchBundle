@@ -13,7 +13,7 @@ You can override some template of FOSUserBundle and redirect to the path of Latc
 		<script type="text/javascript">
 			window.location = '{{ path('fourcoders_latch_register') }}'
 		</script>
-	{% endblock fos_user_content %}	
+	{% endblock fos_user_content %}
 ```
 
 You can make a custom listener too.

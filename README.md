@@ -36,9 +36,7 @@ Add LatchBundle in your composer.json. LatchBundle requires the official Latch P
 
 ```js
 {
-    "autoload": {
-        "psr-0": { "ElevenPaths\\Latch\\": "vendor/elevenpaths/latch-sdk-php" }
-    },
+    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "package",
@@ -61,7 +59,7 @@ Add LatchBundle in your composer.json. LatchBundle requires the official Latch P
         "fourcoders/latch-bundle": "dev-master"
     }
 }
-
+```
 ### Step 2: Enable the bundle
 
 Enable the bundle in the kernel:

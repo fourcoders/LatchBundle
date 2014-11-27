@@ -33,7 +33,7 @@ As you start to incorporate LatchBundle into your application, you will probably
 						<tr>
 							<td>{{ 'latch_token'|trans }}</td>
 							<td>{{ form_widget(form.latch) }}</td>
-						</tr>						
+						</tr>
 					</tbody>
 					<tfoot>
 						<tr>

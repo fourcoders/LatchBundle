@@ -25,6 +25,7 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->variableNode('latch_redirect')
             ->end();
+
         return $treeBuilder;
     }
 }

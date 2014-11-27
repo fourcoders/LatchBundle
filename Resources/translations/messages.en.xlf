@@ -9,7 +9,7 @@
             <trans-unit id="2">
                 <source>latch_pair</source>
                 <target>Pair</target>
-            </trans-unit>      
+            </trans-unit>
         </body>
     </file>
 </xliff>

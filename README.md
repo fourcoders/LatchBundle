@@ -236,6 +236,7 @@ class User
 fourcoders_latch:
     latch_app_id: PdHF10WnSDasSINHHZd0n
     latch_app_secret: kH1oqtVlWyWZLKQWIJCAKLodd4XUIgMMLQiwag
+    latch_driver: eleven_paths
     latch_redirect: / 
 ```
 

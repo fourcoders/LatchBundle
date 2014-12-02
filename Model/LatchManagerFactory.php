@@ -17,7 +17,7 @@ class LatchManagerFactory
     public function getManager() {
         $service = ($this->driver == "eleven_paths")
             ? $this->container->get('latch_manager')
-            : $this->container->get('latch_manager');
+            : /* another manager*/ ;
 
         return $service;
     }

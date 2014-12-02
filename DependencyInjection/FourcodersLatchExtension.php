@@ -23,8 +23,9 @@ class FourcodersLatchExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
         $container->setParameter('latch_app_id', $config['latch_app_id']);
         $container->setParameter('latch_app_secret', $config['latch_app_secret']);
+        $container->setParameter('latch_driver', $config['latch_app_secret']);
         $container->setParameter('latch_redirect', $config['latch_redirect']);
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
+        $loader = new Loader\XMLFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.xml');
     }
 }

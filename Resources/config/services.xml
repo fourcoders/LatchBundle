@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="fourcoders_latch_listener.class">Fourcoders\Bundle\LatchBundle\EventListener\LatchListener</parameter>
+        <parameter key="fourcoders_latch_factory.class">Fourcoders\Bundle\LatchBundle\Model\LatchManagerFactory</parameter>
+        <parameter key="fourcoders_latch_manager.class">Fourcoders\Bundle\LatchBundle\Model\LatchPhpSdkManager</parameter>
+        <parameter key="fourcoders_latch_user_manager.class">Fourcoders\Bundle\LatchBundle\Model\LatchUserManager</parameter>
+    </parameters>
+
+    <services>
+        <service id="fourcoders_latch_factory" class="%fourcoders_latch_factory.class%">
+            <argument type="service" id="service_container" />
+            <argument>%latch_driver%</argument>
+        </service>
+
+        <service id="latch_factory" alias="fourcoders_latch_factory" />
+
+        <service id="fourcoders_latch_manager"
+        class="%fourcoders_latch_manager.class%">
+            <argument>%latch_app_id%</argument>
+            <argument>%latch_app_secret%</argument>
+        </service>
+
+        <service id="latch_manager" alias="fourcoders_latch_manager" />
+
+        <service id="fourcoders_latch_user_manager"
+        class="%fourcoders_latch_user_manager.class%">
+            <argument type="service" id="security.context" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
+        <service id="latch_user_manager" alias="fourcoders_latch_user_manager" />
+
+        <service id="fourcoders_latch_listener" class="%fourcoders_latch_listener.class%">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="latch_factory" />
+            <tag name="kernel.event_listener" event="security.interactive_login" />
+        </service>
+    </services>
+</container>

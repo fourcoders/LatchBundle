@@ -23,6 +23,8 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->variableNode('latch_app_secret')
             ->end()
+            ->variableNode('latch_driver')
+            ->end()
             ->variableNode('latch_redirect')
             ->end();
 

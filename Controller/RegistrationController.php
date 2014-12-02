@@ -22,7 +22,7 @@ class RegistrationController extends Controller
                 $pairResponse = $manager->pair($request->request->get('latch'));
                 $response = $pairResponse->getData();
                 if (isset($response)) {
-                    $latchUserManager=$this->container->get('latch_user_manager');
+                    $latchUserManager = $this->container->get('latch_user_manager');
                     $latchUserManager->pairLatch($response->accountId);
                     $redirect = $this->container->getParameter('latch_redirect');
 

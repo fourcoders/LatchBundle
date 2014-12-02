@@ -24,9 +24,9 @@ class LatchListener
             $manager = $this->latchFactory->getManager();
             $statusResponse = $manager->getStatusResponse($latchValue);
             if ($statusResponse->getError() != null
-                || $manager->getStatusValue($statusResponse) == 'off' ) {
-                    $this->container->get('security.context')->setToken(null);
-                    $this->container->get('request')->getSession()->invalidate();
+                || $manager->getStatusValue($statusResponse) == 'off') {
+                $this->container->get('security.context')->setToken(null);
+                $this->container->get('request')->getSession()->invalidate();
             }
         }
     }

@@ -12,11 +12,9 @@ class RegistrationController extends Controller
     {
         $form = $this->createForm(new LatchType(), null);
         if ($request->getMethod() == 'POST') {
-            if (method_exists($form, 'getRequest')) {
-                $form->bindRequest($request());
-            } else {
-                $form->handleRequest($request);
-            }
+            (method_exists($form, 'getRequest'))
+                ? $form->bindRequest($request)
+                : $form->handleRequest($request);
             if ($form->isValid()) {
                 $response = $this->getPairResponse($request);
                 if (isset($response)) {
@@ -35,7 +33,7 @@ class RegistrationController extends Controller
 
         return $this->render('FourcodersLatchBundle:Registration:register.html.twig', array(
             'error' => isset($error) ? $error : array('message' => '' ),
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ));
     }
 

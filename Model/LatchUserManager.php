@@ -25,13 +25,6 @@ class LatchUserManager
         $this->save($user);
     }
 
-    public function unpairLatch($latchId)
-    {
-        $user = $this->getUserFromSecurityContext();
-        $user->setLatch(null);
-        $this->save($user);
-    }
-
     public function save($user)
     {
         $em = $this->em;

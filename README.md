@@ -1,3 +1,5 @@
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/b3b57288-43e2-41ec-9210-9d927071f5eb/big.png)](https://insight.sensiolabs.com/projects/b3b57288-43e2-41ec-9210-9d927071f5eb)
+
 LatchBundle
 ============================
 Easy integration of Latch in your symfony2 project. 

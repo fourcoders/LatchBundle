@@ -18,9 +18,7 @@ class RegistrationController extends Controller
                 $form->handleRequest($request);
             }
             if ($form->isValid()) {
-                $manager = $this->container->get('latch_factory')->getManager();
-                $pairResponse = $manager->pair($request->request->get('latch'));
-                $response = $pairResponse->getData();
+                $response = $this->getPairResponse($request);
                 if (isset($response)) {
                     $latchUserManager = $this->container->get('latch_user_manager');
                     $latchUserManager->pairLatch($response->accountId);
@@ -39,5 +37,12 @@ class RegistrationController extends Controller
             'error' => isset($error) ? $error : array('message' => '' ),
             'form' => $form->createView(),
         ));
+    }
+
+    protected function getPairResponse(Request $request) {
+        $manager = $this->container->get('latch_factory')->getManager();
+        $pairResponse = $manager->pair($request->request->get('latch'));
+
+        return $pairResponse->getData();
     }
 }

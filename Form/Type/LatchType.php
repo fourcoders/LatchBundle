@@ -1,6 +1,6 @@
 <?php
 
-namespace Fourcoders\Bundle\LatchBundle\Form;
+namespace Fourcoders\Bundle\LatchBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

@@ -2,8 +2,6 @@
 
 namespace Fourcoders\Bundle\LatchBundle\Model;
 
-use Fourcoders\Bundle\LatchBundle\Model\LatchPhpSdkManager;
-
 class LatchManagerFactory
 {
     protected $container;
@@ -15,10 +13,9 @@ class LatchManagerFactory
     }
 
     public function getManager() {
-        $service = ($this->driver == "eleven_paths")
+
+        return $service = ($this->driver == "eleven_paths")
             ? $this->container->get('latch_manager')
             : /* another manager*/ null ;
-
-        return $service;
     }
 }

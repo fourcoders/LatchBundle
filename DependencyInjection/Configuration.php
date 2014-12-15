@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('fourcoders_latch')->children()
+        $treeBuilder->root('fourcoders_latch')->children()
             ->variableNode('latch_app_id')
             ->end()
             ->variableNode('latch_app_secret')

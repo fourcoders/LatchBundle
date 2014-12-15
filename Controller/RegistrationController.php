@@ -3,7 +3,7 @@
 namespace Fourcoders\Bundle\LatchBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Fourcoders\Bundle\LatchBundle\Form\LatchType;
+use Fourcoders\Bundle\LatchBundle\Form\Type\LatchType;
 use Symfony\Component\HttpFoundation\Request;
 
 class RegistrationController extends Controller

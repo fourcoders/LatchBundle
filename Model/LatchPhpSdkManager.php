@@ -2,14 +2,16 @@
 
 namespace Fourcoders\Bundle\LatchBundle\Model;
 
+use Fourcoders\Bundle\LatchBundle\Model\LatchManagerInterface;
 use Latch;
+use LatchResponse;
 
-class LatchPhpSdkManager
+class LatchPhpSdkManager implements LatchManagerInterface
 {
     protected $latchAppId;
     protected $latch;
 
-    public function __construct($latchAppId, $latchAppSecret)
+    public function __construct($latchAppId,$latchAppSecret)
     {
         $this->latchAppId = $latchAppId;
         $this->latch = new Latch($latchAppId, $latchAppSecret);
@@ -29,7 +31,7 @@ class LatchPhpSdkManager
         return $statusResponse;
     }
 
-    public function getStatusValue($statusResponse)
+    public function getStatusValue(LatchResponse $statusResponse)
     {
         $appId = $this->latchAppId;
 

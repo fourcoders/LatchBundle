@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
+use Fourcoders\Bundle\LatchBundle\Model\Operation;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -25,7 +26,19 @@ class FourcodersLatchExtension extends Extension
         $container->setParameter('latch_app_secret', $config['latch_app_secret']);
         $container->setParameter('latch_driver', $config['latch_driver']);
         $container->setParameter('latch_redirect', $config['latch_redirect']);
+
+        $this->setVoterOperations($container,$config['latch_operations']);
+
         $loader = new Loader\XMLFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+    }
+
+    protected function setVoterOperations(ContainerBuilder $container, $configOperations) {
+        $operations = $configOperations;
+        $arrayOperations = array();
+        foreach ($operations as $key => $value) {
+            $arrayOperations[$key] = $value;
+        }
+        $container->setParameter('latch_operations', $arrayOperations);
     }
 }

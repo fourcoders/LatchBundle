@@ -2,7 +2,6 @@
 
 namespace Fourcoders\Bundle\LatchBundle\Model;
 
-use Fourcoders\Bundle\LatchBundle\Model\LatchManagerInterface;
 use Latch;
 use LatchResponse;
 
@@ -11,7 +10,7 @@ class LatchPhpSdkManager implements LatchManagerInterface
     protected $latchAppId;
     protected $latch;
 
-    public function __construct($latchAppId,$latchAppSecret)
+    public function __construct($latchAppId, $latchAppSecret)
     {
         $this->latchAppId = $latchAppId;
         $this->latch = new Latch($latchAppId, $latchAppSecret);
@@ -38,7 +37,7 @@ class LatchPhpSdkManager implements LatchManagerInterface
         return $statusResponse->getData()->operations->$appId->status;
     }
 
-    public function getOperationStatus($latchId , $operationId)
+    public function getOperationStatus($latchId, $operationId)
     {
         $statusResponse = $this->latch->operationStatus($latchId, $operationId);
 
@@ -49,19 +48,18 @@ class LatchPhpSdkManager implements LatchManagerInterface
     {
         $response = $this->latch->getOperations();
 
-        return $response->data->operations;
+        return $response->getData()->operations;
     }
 
     public function getOperationByName($operationName)
     {
         $operations = $this->getOperations();
-        $vars=get_object_vars($operations);
+        $vars = get_object_vars($operations);
         foreach ($vars as $key => $value) {
             $operationsVars  = get_object_vars($operations->$key);
-            if($operationsVars["name"] === $operationName) {
+            if ($operationsVars["name"] === $operationName) {
                 return $key;
             }
         }
     }
-
 }

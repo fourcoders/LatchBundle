@@ -5,7 +5,6 @@ namespace Fourcoders\Bundle\LatchBundle\Model;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class LatchOperationVoter implements VoterInterface
 {
@@ -35,23 +34,24 @@ class LatchOperationVoter implements VoterInterface
     public function vote(TokenInterface $token, $object, array $attributes)
     {
         $request = $this->requestStack->getCurrentRequest();
-
         $user = $token->getUser();
 
-        // si usuario tiene latch
+        // if user has latch
         if (is_object($user) && $user->getLatch()) {
             $operations = $this->operations;
-            $operationName = $this->findRequest( $request->getPathInfo() );
-            // si existe operation verificamos estado operacion
-            if ($operationName) {
-                $operationId = $this->latchManager->getOperationByName($operationName);
-                $operationStatus = $this->latchManager->getOperationStatus($user->getLatch(), $operationId);
-                if ($operationStatus === "off") {
-                    return VoterInterface::ACCESS_DENIED;
-                }
-            } else {
-                return VoterInterface::ACCESS_ABSTAIN;
-            }
+            $operationName = $this->findRequest($request->getPathInfo());
+            // if there is an operation with this pattern verify status operation
+           if ($operationName) {
+               $operationId = $this->latchManager->getOperationByName($operationName);
+               $operationStatus = (isset($operationId))
+                    ? $this->latchManager->getOperationStatus($user->getLatch(), $operationId)
+                    : null;
+               if ($operationStatus === "off") {
+                   return VoterInterface::ACCESS_DENIED;
+               }
+           } else {
+               return VoterInterface::ACCESS_ABSTAIN;
+           }
         }
 
         return VoterInterface::ACCESS_ABSTAIN;
@@ -59,14 +59,20 @@ class LatchOperationVoter implements VoterInterface
 
     protected function findRequest($pathInfo)
     {
-        foreach ($this->operations as $key => $value) {
-            foreach ($this->operations[$key] as $key2 => $value2) {
-                if ($key2 === "pattern") {
-                    if ($value2 === $pathInfo) {
-                        return $this->operations[$key]["latch_operation"];
-                    }
-                }
+        $getOperation = function ($name) use ($pathInfo) {
+            if ($name["pattern"] === $pathInfo) {
+                return $name["latch_operation"];
             }
-        }
+        };
+
+        $getValue = function ($key, $value) {
+            return $value;
+        };
+
+        return array_reduce(
+            array_filter(
+                array_map($getOperation, $this->operations)
+            ), $getValue
+        );
     }
 }

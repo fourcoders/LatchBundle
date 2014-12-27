@@ -18,15 +18,26 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('fourcoders_latch')->children()
-            ->variableNode('latch_app_id')
-            ->end()
-            ->variableNode('latch_app_secret')
-            ->end()
-            ->variableNode('latch_driver')
-            ->end()
-            ->variableNode('latch_redirect')
-            ->end();
+        $rootNode = $treeBuilder->root('fourcoders_latch');
+        $rootNode
+            ->children()
+                ->variableNode('latch_app_id')->isRequired()
+                ->end()
+                ->variableNode('latch_app_secret')->isRequired()
+                ->end()
+                ->variableNode('latch_driver')->isRequired()
+                ->end()
+                ->variableNode('latch_redirect')
+                ->end()
+                ->arrayNode('latch_operations')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('pattern')->isRequired()
+                            ->end()
+                            ->scalarNode('latch_operation')->isRequired()
+                            ->end()
+                    ->end()
+                ->end();
 
         return $treeBuilder;
     }

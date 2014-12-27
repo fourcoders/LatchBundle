@@ -33,11 +33,12 @@ class RegistrationController extends Controller
 
         return $this->render('FourcodersLatchBundle:Registration:register.html.twig', array(
             'error' => isset($error) ? $error : array('message' => '' ),
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ));
     }
 
-    protected function getPairResponse(Request $request) {
+    protected function getPairResponse(Request $request)
+    {
         $manager = $this->container->get('latch_factory')->getManager();
         $pairResponse = $manager->pair($request->request->get('latch'));
 

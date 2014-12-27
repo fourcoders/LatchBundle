@@ -39,5 +39,14 @@
             <argument type="service" id="latch_factory" />
             <tag name="kernel.event_listener" event="security.interactive_login" />
         </service>
+
+        <service id="security.access.latch_operations_voter"
+                 class="Fourcoders\Bundle\LatchBundle\Model\LatchOperationVoter" public="false">
+            <argument type="service" id="latch_manager" />
+            <argument type="service" id="request_stack" strict="false" />
+            <argument>%latch_operations%</argument>
+            <tag name="security.voter" />
+        </service>
+
     </services>
 </container>

@@ -30,6 +30,7 @@ For more information about translations, check [Symfony documentation](http://sy
 4. [Configure the LatchBundle](#step-4-configure-the-latchbundle)
 5. [Import LatchBundle routing](#step-5-import-latchbundle-routing-files)
 6. [Update your database schema](#step-6-update-your-database-schema)
+7. [Setup your latch operations](#step-7-setup-your-latch-operations)
 
 ### Step 1: Download LatchBundle using composer
 
@@ -239,10 +240,11 @@ fourcoders_latch:
     latch_app_id: PdHF10WnSDasSINHHZd0n
     latch_app_secret: kH1oqtVlWyWZLKQWIJCAKLodd4XUIgMMLQiwag
     latch_driver: eleven_paths
-    latch_redirect: / 
+    latch_redirect: /
+    latch_operations: ~
 ```
 
-### Step 5: Import LatchBundle routing files 
+### Step 5: Import LatchBundle routing files
 
 ``` yaml
 # app/config/routing.yml
@@ -251,12 +253,42 @@ fourcoders_latch:
     prefix:   /
 ```
 
-### Step 6: Update your database schema 
+### Step 6: Update your database schema
 
 For ORM run the following command.
 
 ``` bash
 $ php app/console doctrine:schema:update --force
+```
+
+### Step 7: Setup your latch operations
+
+You can securize anyone http resource with your Latch operations.
+Setup your operations with your operation name and pattern.
+
+``` yaml
+# app/config/config.yml
+fourcoders_latch:
+    latch_app_id: PdHF10WnSDasSINHHZd0n
+    latch_app_secret: kH1oqtVlWyWZLKQWIJCAKLodd4XUIgMMLQiwag
+    latch_driver: eleven_paths
+    latch_redirect: /
+    latch_operations:
+        operation1:
+            pattern: "/profile"
+            latch_operation : "profile-operation"
+        operation2:
+            pattern: "/transfer"
+            latch_operation: "transfer-operation"
+```
+
+Finally your operations must be defined in the access control params:
+
+``` yaml
+# app/config/security.yml
+    access_control:
+        - { path: ^/transfer$, role: ROLE_USER }
+        - { path: ^/profile$, role: ROLE_USER }
 ```
 
 Now that you have completed the basic installation and configuration of the
@@ -268,3 +300,4 @@ The following documents are available:
 - [Use into the FOSUserBundle](/Resources/doc/use_fos.md)
 - [Use into the standard registration of symfony documentation](/Resources/doc/use_standard.md)
 - [Overriding Templates](/Resources/doc/overriding_templates.md)
+

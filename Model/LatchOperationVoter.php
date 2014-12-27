@@ -38,7 +38,6 @@ class LatchOperationVoter implements VoterInterface
 
         // if user has latch
         if (is_object($user) && $user->getLatch()) {
-            $operations = $this->operations;
             $operationName = $this->findRequest($request->getPathInfo());
             // if there is an operation with this pattern verify status operation
            if ($operationName) {

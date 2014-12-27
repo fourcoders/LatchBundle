@@ -263,8 +263,8 @@ $ php app/console doctrine:schema:update --force
 
 ### Step 7: Setup your latch operations
 
-You can securize anyone http resource with your Latch operations.
-Setup your operations with your operation name and pattern.
+You can securize any http resource with your Latch operations.
+Begin the setup process of your operations with your operation name and pattern in the config.yml
 
 ``` yaml
 # app/config/config.yml

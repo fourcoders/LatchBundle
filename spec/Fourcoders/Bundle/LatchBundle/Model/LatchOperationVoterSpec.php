@@ -29,7 +29,7 @@ class LatchOperationVoterSpec extends ObjectBehavior
 
     public function it_votes_anon(TokenInterface $token, RequestStack $requestStack, Request $request)
     {
-        $request = $requestStack->getCurrentRequest()->willReturn($request);
+        $requestStack->getCurrentRequest()->willReturn($request);
         $token->getUser()->willReturn("anon.");
         $this->vote($token, $object = null, $attributes = array())->shouldReturn(self::ACCESS_ABSTAIN);
     }
@@ -43,7 +43,7 @@ class LatchOperationVoterSpec extends ObjectBehavior
 
     public function it_votes_that_user_logged_can_access_path_with_unlock_latch_operations(LatchManagerInterface $latchManager, TokenInterface $token, RequestStack $requestStack, Request $request)
     {
-        $path = $request->getPathInfo()->willReturn(Argument::exact('/profile')->getValue());
+        $request->getPathInfo()->willReturn(Argument::exact('/profile')->getValue());
         $this->getCommonStubs($token,$requestStack,$request);
         $this->latchManagerStub($latchManager);
         $latchManager->getOperationStatus(Argument::any(), "profile-operation")->willReturn("on");
@@ -52,7 +52,7 @@ class LatchOperationVoterSpec extends ObjectBehavior
 
     public function it_votes_that_user_logged_cannot_access_path_with_lock_latch_operations(LatchManagerInterface $latchManager, TokenInterface $token, RequestStack $requestStack, Request $request)
     {
-        $path = $request->getPathInfo()->willReturn(Argument::exact('/profile')->getValue());
+        $request->getPathInfo()->willReturn(Argument::exact('/profile')->getValue());
         $this->getCommonStubs($token,$requestStack,$request);
         $this->latchManagerStub($latchManager);
         $latchManager->getOperationStatus(Argument::any(), "profile-operation")->willReturn("off");

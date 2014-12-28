@@ -1,5 +1,7 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/b3b57288-43e2-41ec-9210-9d927071f5eb/big.png)](https://insight.sensiolabs.com/projects/b3b57288-43e2-41ec-9210-9d927071f5eb)
 
+[![Build Status](https://travis-ci.org/fourcoders/LatchBundle.svg?branch=master)](https://travis-ci.org/fourcoders/LatchBundle) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fourcoders/LatchBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fourcoders/LatchBundle/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/fourcoders/LatchBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/fourcoders/LatchBundle/?branch=master)
+
 LatchBundle
 ============================
 Easy integration of Latch in your symfony2 project. 

@@ -11,4 +11,10 @@ interface LatchManagerInterface
     public function getStatusResponse($latchId);
 
     public function getStatusValue(LatchResponse $statusResponse);
+
+    public function getOperationStatus($latchId, $operationId);
+
+    public function getOperations($operationId = null);
+
+    public function getOperationByName($operationName);
 }

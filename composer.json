@@ -32,6 +32,12 @@
         "symfony/framework-bundle": ">=2.0.0",
         "elevenPaths/latch-sdk-php": "master"
     },
+    "require-dev": {
+        "phpspec/phpspec":              "~2.0"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
     "autoload": {
         "psr-0": {
             "Fourcoders\\Bundle\\LatchBundle": "",

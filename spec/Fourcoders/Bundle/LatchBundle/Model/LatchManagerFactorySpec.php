@@ -11,12 +11,10 @@ class LatchManagerFactorySpec extends ObjectBehavior
 {
     public function let(
             ContainerInterface $container,
-            $driver,
             LatchManagerInterface $manager
         ) {
         $container->get(Argument::any())->willReturn($manager);
-        $driver = Argument::exact('eleven_paths');
-        $this->beConstructedWith($container, $driver->getValue());
+        $this->beConstructedWith($container, Argument::exact('eleven_paths')->getValue());
     }
 
     public function it_is_initializable()

@@ -45,9 +45,7 @@ class LatchOperationVoterSpec extends ObjectBehavior
     {
         $path = $request->getPathInfo()->willReturn(Argument::exact('/profile')->getValue());
         $this->getCommonStubs($token,$requestStack,$request);
-        $latchManager
-            ->getOperationByName(Argument::exact("profile-operation")->getValue())
-            ->willReturn(Argument::exact("profile-operation")->getValue());
+        $this->latchManagerStub($latchManager);
         $latchManager->getOperationStatus(Argument::any(), "profile-operation")->willReturn("on");
         $this->vote($token, $object = null, $attributes = array())->shouldReturn(self::ACCESS_ABSTAIN);
     }
@@ -56,9 +54,7 @@ class LatchOperationVoterSpec extends ObjectBehavior
     {
         $path = $request->getPathInfo()->willReturn(Argument::exact('/profile')->getValue());
         $this->getCommonStubs($token,$requestStack,$request);
-        $latchManager
-            ->getOperationByName(Argument::exact("profile-operation")->getValue())
-            ->willReturn(Argument::exact("profile-operation")->getValue());
+        $this->latchManagerStub($latchManager);
         $latchManager->getOperationStatus(Argument::any(), "profile-operation")->willReturn("off");
         $this->vote($token, $object = null, $attributes = array())->shouldReturn(self::ACCESS_DENIED);
     }
@@ -68,6 +64,13 @@ class LatchOperationVoterSpec extends ObjectBehavior
         $requestStack->getCurrentRequest()->willReturn($request);
         $latchUser = $this->getMockUser();
         $token->getUser()->willReturn($latchUser);
+    }
+
+    protected function latchManagerStub(LatchManagerInterface $latchManager)
+    {
+        $latchManager
+            ->getOperationByName(Argument::exact("profile-operation")->getValue())
+            ->willReturn(Argument::exact("profile-operation")->getValue());
     }
 
     protected function getMockUser()

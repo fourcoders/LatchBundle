@@ -7,12 +7,8 @@ use Prophecy\Argument;
 
 class LatchPhpSdkManagerSpec extends ObjectBehavior
 {
-    public function let(
-            $latchAppId, $latchAppSecret
-        ) {
-        $latchAppId = Argument::type('string');
-        $latchAppSecret = Argument::type('string');
-        $this->beConstructedWith($latchAppId, $latchAppSecret);
+    public function let() {
+        $this->beConstructedWith(Argument::type('string'), Argument::type('string'));
     }
 
     public function it_is_initializable()

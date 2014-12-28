@@ -4,15 +4,13 @@ namespace spec\Fourcoders\Bundle\LatchBundle\Model;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Fourcoders\Bundle\LatchBundle\Model\LatchManagerInterface;
-
 
 class LatchManagerFactorySpec extends ObjectBehavior
 {
     public function let(
-            ContainerInterface $container ,
+            ContainerInterface $container,
             $driver,
             LatchManagerInterface $manager
         ) {
@@ -21,12 +19,12 @@ class LatchManagerFactorySpec extends ObjectBehavior
         $this->beConstructedWith($container, $driver->getValue());
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('Fourcoders\Bundle\LatchBundle\Model\LatchManagerFactory');
     }
 
-    function it_gets_manager()
+    public function it_gets_manager()
     {
         $this->getManager()
             ->shouldReturnAnInstanceOf('Fourcoders\Bundle\LatchBundle\Model\LatchManagerInterface');

@@ -1,4 +1,8 @@
+filter:
+    excluded-paths: [ spec/* ]
+
 checks:
     php:
         code_rating: true
         duplication: true
+

@@ -17,14 +17,14 @@ class RegistrationController extends Controller
                 : $form->handleRequest($request);
             if ($form->isValid()) {
                 $response = $this->getPairResponse($request);
-                if (isset($response)) {
+                if (null !== $response->getData()) {
                     $latchUserManager = $this->container->get('latch_user_manager');
-                    $latchUserManager->pairLatch($response->accountId);
+                    $latchUserManager->pairLatch($response->getData()->accountId);
                     $redirect = $this->container->getParameter('latch_redirect');
 
                     return $this->redirect(empty($redirect) ? '/' : $redirect);
                 } else {
-                    $error = $pairResponse->getError();
+                    $error = $response->getError();
                 }
             } else {
                 $error = array('message' => 'Empty code');
@@ -42,6 +42,6 @@ class RegistrationController extends Controller
         $manager = $this->container->get('latch_factory')->getManager();
         $pairResponse = $manager->pair($request->request->get('latch'));
 
-        return $pairResponse->getData();
+        return $pairResponse;
     }
 }

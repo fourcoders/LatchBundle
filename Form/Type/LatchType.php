@@ -23,6 +23,6 @@ class LatchType extends AbstractType
 
     public function getName()
     {
-        return '';
+        return 'latch_pair';
     }
 }

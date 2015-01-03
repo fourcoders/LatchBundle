@@ -3,7 +3,6 @@
 namespace Fourcoders\Bundle\LatchBundle\Model;
 
 use Latch;
-use LatchResponse;
 
 class LatchPhpSdkManager implements LatchManagerInterface
 {
@@ -19,36 +18,47 @@ class LatchPhpSdkManager implements LatchManagerInterface
     public function pair($latchToken)
     {
         $response = $this->latch->pair($latchToken);
+        $pairResponse = $this->getDataFromPair($response);
 
-        return $response;
+        return $pairResponse;
+    }
+
+    protected function getDataFromPair($response)
+    {
+        $pairResponse = array();
+
+        (null !== $response->getData())
+            ? $pairResponse["data"]["accountId"] = $response->getData()->accountId
+            : $pairResponse["error"]["message"]  = $response->getError()->getMessage();
+
+        return $pairResponse;
     }
 
     public function getStatusResponse($latchId)
     {
-        $statusResponse = $this->latch->status($latchId);
-
-        return $statusResponse;
+        return $this->latch->status($latchId);
     }
 
-    public function getStatusValue(LatchResponse $statusResponse)
+    public function getStatusValue($latchId)
     {
         $appId = $this->latchAppId;
 
-        return $statusResponse->getData()->operations->$appId->status;
+        return $this->latch->status($latchId)->getData()->operations->$appId->status;
     }
 
     public function getOperationStatus($latchId, $operationId)
     {
-        $statusResponse = $this->latch->operationStatus($latchId, $operationId);
-
-        return $statusResponse->getData()->operations->$operationId->status;
+        return $this->latch->operationStatus($latchId, $operationId)->getData()->operations->$operationId->status;
     }
 
     public function getOperations($operationId = null)
     {
-        $response = $this->latch->getOperations();
+        return $this->latch->getOperations()->getData()->operations;
+    }
 
-        return $response->getData()->operations;
+    public function getError($latchId)
+    {
+        return $this->latch->status($latchId)->getError();
     }
 
     public function getOperationByName($operationName)

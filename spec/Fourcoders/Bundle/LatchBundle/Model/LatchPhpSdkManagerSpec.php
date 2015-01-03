@@ -7,7 +7,8 @@ use Prophecy\Argument;
 
 class LatchPhpSdkManagerSpec extends ObjectBehavior
 {
-    public function let() {
+    public function let()
+    {
         $this->beConstructedWith(Argument::type('string'), Argument::type('string'));
     }
 

@@ -6,11 +6,13 @@ class LatchUserManager
 {
     protected $em;
     protected $securityContext;
+    protected $request;
 
-    public function __construct($securityContext, $entityManager)
+    public function __construct($securityContext, $entityManager, $request)
     {
         $this->securityContext = $securityContext;
         $this->em = $entityManager;
+        $this->request = $request;
     }
 
     public function getUserFromSecurityContext()
@@ -21,8 +23,18 @@ class LatchUserManager
     public function pairLatch($latchId)
     {
         $user = $this->getUserFromSecurityContext();
-        $user->setLatch($latchId);
-        $this->save($user);
+        if (method_exists($user, 'setLatch')) {
+            $user->setLatch($latchId);
+            $this->save($user);
+        } else {
+            throw new \Exception('User must be logged before pair with Latch');
+        }
+    }
+
+    public function unsetUser()
+    {
+        $this->securityContext->setToken(null);
+        $this->request->getSession()->invalidate();
     }
 
     public function save($user)

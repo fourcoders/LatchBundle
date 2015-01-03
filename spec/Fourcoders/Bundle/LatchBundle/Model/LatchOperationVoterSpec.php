@@ -40,20 +40,20 @@ class LatchOperationVoterSpec extends ObjectBehavior
         $this->vote($token, $object = null, $attributes = array())->shouldReturn(self::ACCESS_ABSTAIN);
     }
 
-    public function it_votes_that_user_logged_can_access_path_without_latch_operations(TokenInterface $token,Request $request)
+    public function it_votes_that_user_logged_can_access_path_without_latch_operations(TokenInterface $token, Request $request)
     {
         $request->getPathInfo()->willReturn(Argument::exact('/home')->getValue());
         $this->vote($token, $object = null, $attributes = array())->shouldReturn(self::ACCESS_ABSTAIN);
     }
 
-    public function it_votes_that_user_logged_can_access_path_with_unlock_latch_operations(TokenInterface $token,Request $request, LatchManagerInterface $latchManager)
+    public function it_votes_that_user_logged_can_access_path_with_unlock_latch_operations(TokenInterface $token, Request $request, LatchManagerInterface $latchManager)
     {
         $request->getPathInfo()->willReturn(Argument::exact('/profile')->getValue());
         $latchManager->getOperationStatus(Argument::any(), "profile-operation")->willReturn("on");
         $this->vote($token, $object = null, $attributes = array())->shouldReturn(self::ACCESS_ABSTAIN);
     }
 
-    public function it_votes_that_user_logged_cannot_access_path_with_lock_latch_operations(TokenInterface $token,Request $request,LatchManagerInterface $latchManager)
+    public function it_votes_that_user_logged_cannot_access_path_with_lock_latch_operations(TokenInterface $token, Request $request, LatchManagerInterface $latchManager)
     {
         $request->getPathInfo()->willReturn(Argument::exact('/profile')->getValue());
         $latchManager->getOperationStatus(Argument::any(), "profile-operation")->willReturn("off");

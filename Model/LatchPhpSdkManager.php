@@ -25,7 +25,7 @@ class LatchPhpSdkManager implements LatchManagerInterface
 
     protected function getDataFromPair($response)
     {
-        $pairResponse = [];
+        $pairResponse = array();
 
         (null !== $response->getData())
             ? $pairResponse["data"]["accountId"] = $response->getData()->accountId

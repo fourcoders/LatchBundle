@@ -30,12 +30,13 @@
         class="%fourcoders_latch_user_manager.class%">
             <argument type="service" id="security.context" />
             <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="request" strict="false" />
         </service>
 
         <service id="latch_user_manager" alias="fourcoders_latch_user_manager" />
 
         <service id="fourcoders_latch_listener" class="%fourcoders_latch_listener.class%">
-            <argument type="service" id="service_container" />
+            <argument type="service" id="latch_user_manager" />
             <argument type="service" id="latch_factory" />
             <tag name="kernel.event_listener" event="security.interactive_login" />
         </service>

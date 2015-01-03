@@ -16,15 +16,15 @@ class RegistrationController extends Controller
                 ? $form->bindRequest($request)
                 : $form->handleRequest($request);
             if ($form->isValid()) {
-                $response = $this->getPairResponse($request);
-                if (null !== $response->getData()) {
+                $response = $this->getPairResponse($form->getData());
+                if (isset($response["data"])) {
                     $latchUserManager = $this->container->get('latch_user_manager');
-                    $latchUserManager->pairLatch($response->getData()->accountId);
+                    $latchUserManager->pairLatch($response["data"]["accountId"]);
                     $redirect = $this->container->getParameter('latch_redirect');
 
                     return $this->redirect(empty($redirect) ? '/' : $redirect);
                 } else {
-                    $error = $response->getError();
+                    $error = $response["error"];
                 }
             } else {
                 $error = array('message' => 'Empty code');
@@ -37,11 +37,11 @@ class RegistrationController extends Controller
         ));
     }
 
-    protected function getPairResponse(Request $request)
+    protected function getPairResponse($formData)
     {
         $manager = $this->container->get('latch_factory')->getManager();
-        $pairResponse = $manager->pair($request->request->get('latch'));
+        $response = $manager->pair($formData["latch"]);
 
-        return $pairResponse;
+        return $response;
     }
 }

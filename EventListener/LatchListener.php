@@ -6,12 +6,12 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class LatchListener
 {
-    protected $container;
+    protected $latchUserManager;
     protected $latchFactory;
 
-    public function __construct($container, $latchFactory)
+    public function __construct($latchUserManager, $latchFactory)
     {
-        $this->container = $container;
+        $this->latchUserManager = $latchUserManager;
         $this->latchFactory = $latchFactory;
     }
 
@@ -23,10 +23,9 @@ class LatchListener
         if (!empty($latchValue)) {
             $manager = $this->latchFactory->getManager();
             $statusResponse = $manager->getStatusResponse($latchValue);
-            if ($statusResponse->getError() !== null
-                || $manager->getStatusValue($statusResponse) == 'off') {
-                $this->container->get('security.context')->setToken(null);
-                $this->container->get('request')->getSession()->invalidate();
+            if ($manager->getError($latchValue) !== null
+                || $manager->getStatusValue($latchValue) == 'off') {
+                $this->latchUserManager->unsetUser();
             }
         }
     }

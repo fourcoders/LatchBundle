@@ -22,7 +22,6 @@ class LatchListener
 
         if (!empty($latchValue)) {
             $manager = $this->latchFactory->getManager();
-            $statusResponse = $manager->getStatusResponse($latchValue);
             if ($manager->getError($latchValue) !== null
                 || $manager->getStatusValue($latchValue) == 'off') {
                 $this->latchUserManager->unsetUser();

@@ -4,7 +4,6 @@
     "description": "Easy integration of Latch in your symfony2 project.",
     "keywords": ["security", "symfony", "latch", "fourcoders", "php"],
     "license": "MIT",
-    "minimum-stability": "dev",
     "authors": [{
             "name": "fourcoders",
             "homepage": "http://fourcoders.com/",
@@ -15,11 +14,11 @@
             "type": "package",
             "package": {
                 "name": "elevenpaths/latch-sdk-php",
-                "version": "master",
+                "version": "dev-master",
                 "source": {
                     "url": "https://github.com/ElevenPaths/latch-sdk-php.git",
                     "type": "git",
-                    "reference": "master"
+                    "reference": "origin/master"
                 },
             "autoload": {
                 "classmap": ["/"]
@@ -32,9 +31,9 @@
         "symfony/framework-bundle": ">=2.0.0",
         "symfony/security-http": "v2.6.1",
         "doctrine/orm": "2.5.*@dev",
-        "symfony/form": "~2.7|~3.0",
+        "symfony/form": "2.7.*@dev",
         "symfony/validator" : "v2.6.0",
-        "elevenPaths/latch-sdk-php": "master"
+        "elevenPaths/latch-sdk-php": "dev-master"
     },
     "require-dev": {
         "phpspec/phpspec":              "~2.0"

@@ -31,7 +31,7 @@
         "symfony/framework-bundle": ">=2.0.0",
         "symfony/security-http": "v2.6.1",
         "doctrine/orm": "2.5.*@dev",
-        "symfony/form": "~2.7|~3.0",
+        "symfony/form": "2.7.*@dev",
         "symfony/validator" : "v2.6.0",
         "elevenPaths/latch-sdk-php": "dev-master"
     },

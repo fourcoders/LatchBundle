@@ -41,17 +41,16 @@ Add LatchBundle in your composer.json. LatchBundle requires the official Latch P
 
 ```js
 {
-    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "package",
             "package": {
                 "name": "elevenpaths/latch-sdk-php",
-                "version": "master",
+                "version": "dev-master",
                 "source": {
                     "url": "https://github.com/ElevenPaths/latch-sdk-php.git",
                     "type": "git",
-                    "reference": "master"
+                    "reference": "origin/master"
                 },
             "autoload": {
                 "classmap": ["/"]
@@ -60,7 +59,7 @@ Add LatchBundle in your composer.json. LatchBundle requires the official Latch P
         }
     ],
     "require": {
-        "elevenPaths/latch-sdk-php": "master",
+        "elevenPaths/latch-sdk-php": "dev-master",
         "fourcoders/latch-bundle": "dev-master"
     }
 }

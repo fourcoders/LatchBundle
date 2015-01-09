@@ -32,11 +32,11 @@
         "symfony/security-http": "v2.6.1",
         "doctrine/orm": "2.5.*@dev",
         "symfony/form": "2.7.*@dev",
-        "symfony/validator" : "v2.6.0",
         "elevenPaths/latch-sdk-php": "dev-master"
     },
     "require-dev": {
-        "phpspec/phpspec":              "~2.0"
+        "phpspec/phpspec":              "~2.0",
+	"symfony/validator" : "v2.6.0"
     },
     "config": {
         "bin-dir": "bin"

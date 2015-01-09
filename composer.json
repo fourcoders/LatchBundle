@@ -27,7 +27,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.2",
+        "php": ">=5.3.3",
         "elevenPaths/latch-sdk-php": "dev-master"
     },
     "require-dev": {

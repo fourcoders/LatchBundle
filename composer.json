@@ -27,8 +27,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "elevenPaths/latch-sdk-php": "dev-master"
+        "php": ">=5.3.3"
     },
     "require-dev": {
         "phpspec/phpspec": "~2.0",
@@ -36,7 +35,9 @@
         "symfony/security-http": "v2.6.1",
         "doctrine/orm": "2.5.*@dev",
         "symfony/form": "2.7.*@dev",
-	"symfony/validator": "v2.6.0"
+        "symfony/validator": "v2.6.0",
+        "elevenPaths/latch-sdk-php": "dev-master",
+        "fourcoders/latch-sdk-php" : "dev-master"
     },
     "config": {
         "bin-dir": "bin"

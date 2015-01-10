@@ -36,7 +36,10 @@ For more information about translations, check [Symfony documentation](http://sy
 
 ### Step 1: Download LatchBundle using composer
 
-Add LatchBundle in your composer.json. LatchBundle requires the official Latch PHP SDK by ElevenPaths.
+Add LatchBundle in your composer.json.
+
+First option:
+You can install the official [Latch PHP SDK by ElevenPaths](https://github.com/ElevenPaths/latch-sdk-php).
 [Composer can not load repositories recursively](https://getcomposer.org/doc/faqs/why-can%27t-composer-load-repositories-recursively.md) .You need to add this dependency in your composer.json or You can manage it by satis or toran proxy.
 
 ```js
@@ -64,6 +67,20 @@ Add LatchBundle in your composer.json. LatchBundle requires the official Latch P
     }
 }
 ```
+
+Second Option:
+You can install unofficial [fourcoders/latch-sdk-php](https://github.com/fourcoders/latch-sdk-php).Its very similar than the official Latch PHP SDK by ElevenPaths , however we use composer for managing the dependencies and Guzzle for the HTTP Request.
+
+
+```js
+{
+    "require": {
+        "fourcoders/latch-sdk-php": "dev-master",
+        "fourcoders/latch-bundle": "dev-master"
+    }
+}
+```
+
 ### Step 2: Enable the bundle
 
 Enable the bundle in the kernel:

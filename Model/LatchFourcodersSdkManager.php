@@ -2,11 +2,12 @@
 
 namespace Fourcoders\Bundle\LatchBundle\Model;
 
-use Latch;
+use Fourcoders\LatchSdk\Latch;
 
-class LatchPhpSdkManager implements LatchManagerInterface
+class LatchFourcodersSdkManager implements LatchManagerInterface
 {
     protected $latchAppId;
+    protected $latchAppSecret;
     protected $latch;
 
     public function __construct($latchAppId, $latchAppSecret)

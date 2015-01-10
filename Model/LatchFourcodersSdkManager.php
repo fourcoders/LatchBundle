@@ -42,7 +42,6 @@ class LatchFourcodersSdkManager implements LatchManagerInterface
 
     public function getStatusResponse($latchId)
     {
-
         return $this->latch->status($latchId);
     }
 

@@ -2,7 +2,6 @@
 
 namespace Fourcoders\Bundle\LatchBundle\Model;
 
-
 interface LatchManagerInterface
 {
     /**

@@ -17,6 +17,6 @@ class LatchManagerFactory
     {
         return ($this->driver == "eleven_paths")
             ? $this->container->get('latch_manager')
-            : /* another manager*/ null;
+            : $this->container->get('fourcoders_manager');
     }
 }

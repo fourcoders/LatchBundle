@@ -6,6 +6,7 @@
     <parameters>
         <parameter key="fourcoders_latch_listener.class">Fourcoders\Bundle\LatchBundle\EventListener\LatchListener</parameter>
         <parameter key="fourcoders_latch_factory.class">Fourcoders\Bundle\LatchBundle\Model\LatchManagerFactory</parameter>
+        <parameter key="fourcoders_sdk_latch_manager.class">Fourcoders\Bundle\LatchBundle\Model\LatchFourcodersSdkManager</parameter>
         <parameter key="fourcoders_latch_manager.class">Fourcoders\Bundle\LatchBundle\Model\LatchPhpSdkManager</parameter>
         <parameter key="fourcoders_latch_user_manager.class">Fourcoders\Bundle\LatchBundle\Model\LatchUserManager</parameter>
     </parameters>
@@ -22,9 +23,19 @@
         class="%fourcoders_latch_manager.class%">
             <argument>%latch_app_id%</argument>
             <argument>%latch_app_secret%</argument>
+            <call method="setClient"></call>
         </service>
 
         <service id="latch_manager" alias="fourcoders_latch_manager" />
+
+        <service id="fourcoders_sdk_latch_manager"
+        class="%fourcoders_sdk_latch_manager.class%">
+            <argument>%latch_app_id%</argument>
+            <argument>%latch_app_secret%</argument>
+            <call method="setClient"></call>
+        </service>
+
+        <service id="fourcoders_manager" alias="fourcoders_sdk_latch_manager" />
 
         <service id="fourcoders_latch_user_manager"
         class="%fourcoders_latch_user_manager.class%">

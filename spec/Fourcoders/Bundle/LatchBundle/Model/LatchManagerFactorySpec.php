@@ -14,7 +14,7 @@ class LatchManagerFactorySpec extends ObjectBehavior
             LatchManagerInterface $manager
         ) {
         $container->get(Argument::any())->willReturn($manager);
-        $this->beConstructedWith($container, Argument::exact('eleven_paths')->getValue());
+        $this->beConstructedWith($container, Argument::exact(Argument::any())->getValue());
     }
 
     public function it_is_initializable()

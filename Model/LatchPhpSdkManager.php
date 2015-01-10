@@ -7,6 +7,7 @@ use Latch;
 class LatchPhpSdkManager implements LatchManagerInterface
 {
     protected $latchAppId;
+    protected $latchAppSecret;
     protected $latch;
 
     public function __construct($latchAppId, $latchAppSecret)

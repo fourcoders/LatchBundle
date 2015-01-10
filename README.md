@@ -69,7 +69,7 @@ You can install the official [Latch PHP SDK by ElevenPaths](https://github.com/E
 ```
 
 Second Option:
-You can install unofficial [fourcoders/latch-sdk-php](https://github.com/fourcoders/latch-sdk-php).Its very similar than the official Latch PHP SDK by ElevenPaths , however we use composer for managing the dependencies and Guzzle for the HTTP Request.
+You can install unofficial [fourcoders/latch-sdk-php](https://github.com/fourcoders/latch-sdk-php). Its very similar to the official Latch PHP SDK by ElevenPaths , however we use composer for managing the dependencies and Guzzle for the HTTP Request.
 
 
 ```js

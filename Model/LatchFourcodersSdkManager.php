@@ -4,7 +4,7 @@ namespace Fourcoders\Bundle\LatchBundle\Model;
 
 use Fourcoders\LatchSdk\Latch;
 
-class LatchFourcodersSdkManager implements LatchManagerInterface
+class LatchFourcodersSdkManager extends LatchManagerBase
 {
     protected $latchAppId;
     protected $latchAppSecret;

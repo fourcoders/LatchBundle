@@ -5,6 +5,7 @@ namespace spec\Fourcoders\Bundle\LatchBundle\Model;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Fourcoders\Bundle\LatchBundle\Model\LatchManagerInterface;
+use Fourcoders\Bundle\LatchBundle\Model\LatchManagerFactory;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,16 +18,17 @@ class LatchOperationVoterSpec extends ObjectBehavior
 
     public function let(
             LatchManagerInterface $latchManager, RequestStack $requestStack, $operations,
-            TokenInterface $token, Request $request
+            TokenInterface $token, Request $request , LatchManagerFactory $latchFactory
         ) {
         $operations = array("1" => array("pattern" => "/profile", "latch_operation" => "profile-operation"));
         $requestStack->getCurrentRequest()->willReturn($request);
         $latchUser = $this->getMockUser();
         $token->getUser()->willReturn($latchUser);
+        $latchFactory->getManager()->willReturn($latchManager);
         $latchManager
             ->getOperationByName(Argument::exact("profile-operation")->getValue())
             ->willReturn(Argument::exact("profile-operation")->getValue());
-        $this->beConstructedWith($latchManager, $requestStack, $operations);
+        $this->beConstructedWith($latchFactory, $requestStack, $operations);
     }
 
     public function it_is_initializable()

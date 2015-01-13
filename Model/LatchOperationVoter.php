@@ -12,9 +12,9 @@ class LatchOperationVoter implements VoterInterface
     protected $requestStack;
     protected $operations;
 
-    public function __construct($latchManager, RequestStack $requestStack, array $operations = array())
+    public function __construct($latchFactory, RequestStack $requestStack, array $operations = array())
     {
-        $this->latchManager = $latchManager;
+        $this->latchFactory = $latchFactory;
         $this->requestStack  = $requestStack;
         $this->operations = $operations;
     }
@@ -41,9 +41,10 @@ class LatchOperationVoter implements VoterInterface
             $operationName = $this->findRequest($request->getPathInfo());
             // if there is an operation with this pattern verify status operation
            if ($operationName) {
-               $operationId = $this->latchManager->getOperationByName($operationName);
+               $manager = $this->latchFactory->getManager();
+               $operationId = $manager->getOperationByName($operationName);
                $operationStatus = (isset($operationId))
-                    ? $this->latchManager->getOperationStatus($user->getLatch(), $operationId)
+                    ? $manager->getOperationStatus($user->getLatch(), $operationId)
                     : null;
                if ($operationStatus === "off") {
                    return VoterInterface::ACCESS_DENIED;

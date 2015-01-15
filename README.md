@@ -68,6 +68,19 @@ You can install the official [Latch PHP SDK by ElevenPaths](https://github.com/E
 }
 ```
 
+After install libraries, You must put eleven_paths as a your latch_driver in your config.yml:
+
+``` yaml
+# app/config/config.yml
+fourcoders_latch:
+    latch_app_id: PdHF10WnSDasSINHHZd0n
+    latch_app_secret: kH1oqtVlWyWZLKQWIJCAKLodd4XUIgMMLQiwag
+    latch_driver: eleven_paths
+    latch_redirect: /
+    latch_operations: ~
+```
+
+
 Second Option:
 You can install unofficial [fourcoders/latch-sdk-php](https://github.com/fourcoders/latch-sdk-php). Its very similar to the official Latch PHP SDK by ElevenPaths , however we use composer for managing the dependencies and Guzzle for the HTTP Request.
 
@@ -79,6 +92,18 @@ You can install unofficial [fourcoders/latch-sdk-php](https://github.com/fourcod
         "fourcoders/latch-bundle": "dev-master"
     }
 }
+```
+
+After install libraries, You must put fourcorders as a your latch_driver in your config.yml:
+
+``` yaml
+# app/config/config.yml
+fourcoders_latch:
+    latch_app_id: PdHF10WnSDasSINHHZd0n
+    latch_app_secret: kH1oqtVlWyWZLKQWIJCAKLodd4XUIgMMLQiwag
+    latch_driver: fourcoders
+    latch_redirect: /
+    latch_operations: ~
 ```
 
 ### Step 2: Enable the bundle
@@ -251,6 +276,8 @@ class User
 
 
 ### Step 4: Configure the LatchBundle
+
+How to setup [latch_driver](#step-1-download-latchbundle-using-composer)
 
 ``` yaml
 # app/config/config.yml

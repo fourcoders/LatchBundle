@@ -33,7 +33,7 @@
         "phpspec/phpspec": "~2.0",
         "symfony/framework-bundle": ">=2.0.0",
         "symfony/security-http": "v2.6.1",
-        "doctrine/orm": "2.5.*@dev",
+        "doctrine/orm": "v2.4.7",
         "symfony/form": "2.7.*@dev",
         "symfony/validator": "v2.6.0",
         "elevenPaths/latch-sdk-php": "dev-master",
